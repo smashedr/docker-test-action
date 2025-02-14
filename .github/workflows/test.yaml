@@ -18,15 +18,27 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
+      - name: "Edit YAML"
+        uses: Liam-Johnston/yaml-helper@V1
+        with:
+          file-location: "action.yml"
+          content: |
+            runs:
+              image: src/Dockerfile
+
       - name: "Test Local Action"
         id: test
         uses: ./
         with:
           tag: "test"
 
-      - name: "Echo Outputs"
+      - name: "Validate Outputs"
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
+          if [ -z '${{ steps.test.outputs.sha }}' ];then
+            echo "No Output: sha"
+            exit 1
+          fi
 
   lint:
     name: "Lint"

@@ -112,6 +112,8 @@ You should also review the options from `act --help`
 Note, the `.env`, `.secrets` and `.vars` files are automatically sourced with no extra options.
 To source `event.json` you need to run act with `act -e event.json`
 
+To use a locally built image enable offline mode: `--action-offline-mode`
+
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
     This is only available to allow users to pass a different token they have created and defined in their `secrets`.
