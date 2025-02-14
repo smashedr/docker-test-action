@@ -31,14 +31,14 @@ With no inputs this will create/update the tag `test`.
 
 ```yaml
 - name: 'Docker Test Action'
-  uses: smashedr/docker-test-action@master
+  uses: smashedr/docker-test-action@v1
 ```
 
 With all inputs. Note that `token` is NOT required.
 
 ```yaml
 - name: 'Docker Test Action'
-  uses: smashedr/docker-test-action@master
+  uses: smashedr/docker-test-action@v1
   with:
     tag: test
     summary: true
@@ -63,7 +63,7 @@ permissions:
 ```yaml
 - name: 'Docker Test Action'
   id: test
-  uses: smashedr/docker-test-action@master
+  uses: smashedr/docker-test-action@v1
 
 - name: 'Echo Output'
   run: |
@@ -93,7 +93,7 @@ jobs:
 
       - name: 'Docker Test Action'
         id: test
-        uses: smashedr/docker-test-action@master
+        uses: smashedr/docker-test-action@v1
 
       - name: 'Echo Outputs'
         run: |
