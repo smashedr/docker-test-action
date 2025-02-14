@@ -25,4 +25,5 @@ outputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  #image: "src/Dockerfile"
+  image: "docker://ghcr.io/smashedr/docker-test-action"

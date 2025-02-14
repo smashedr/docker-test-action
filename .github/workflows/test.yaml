@@ -18,6 +18,14 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
+      - name: "Edit YAML"
+        uses: Liam-Johnston/yaml-helper@V1
+        with:
+          file-location: "action.yml"
+          content: |
+            runs:
+              image: src/Dockerfile
+
       - name: "Test Local Action"
         id: test
         uses: ./
