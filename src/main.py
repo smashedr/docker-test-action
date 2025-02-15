@@ -74,7 +74,10 @@ if input_summary in ["y", "yes", "true", "on"]:
             f"<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>{input_tag}</td></tr><tr><td>summary</td><td>{input_summary}</td></tr></table></details>\n",  # noqa: E501
             file=f,
         )
-        print(f"[Report an issue or request a feature]({r.html_url}/issues)", file=f)
+        print(
+            "[Report an issue or request a feature](https://github.com/smashedr/docker-test-action/issues)",
+            file=f,
+        )
 
 
 print("✅ \033[32;1mFinished Success")
