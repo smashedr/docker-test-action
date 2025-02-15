@@ -6,12 +6,12 @@ print("🏳️ Starting Python Test Action")
 
 # Inputs
 
-input_tag = os.environ.get("INPUT_TAG")
-print(f"input_tag: {input_tag}")
-input_summary = os.environ.get("INPUT_SUMMARY")
-print(f"input_summary: {input_summary}")
-input_token = os.environ.get("INPUT_TOKEN")
-print(f"input_token: {input_token}")
+input_tag = os.environ.get("INPUT_TAG", "").strip()
+print(f"input_tag: \033[36;1m{input_tag}")
+input_summary = os.environ.get("INPUT_SUMMARY", "").strip()
+print(f"input_summary: \033[36;1m{input_summary}")
+input_token = os.environ.get("INPUT_TOKEN", "").strip()
+print(f"input_token: \033[36;1m{input_token}")
 
 owner = os.environ.get("GITHUB_REPOSITORY").split("/")[0]
 repo = os.environ.get("GITHUB_REPOSITORY").split("/")[1]
@@ -19,7 +19,7 @@ print(f"owner: {owner}")
 print(f"repo: {repo}")
 
 sha = os.environ.get("GITHUB_SHA")
-print(f"sha: {sha}")
+print(f"sha: \033[35;1m{sha}")
 
 
 # Action
@@ -29,10 +29,13 @@ r = g.get_repo(f"{owner}/{repo}")
 print(f"repo.name: {r.name}")
 print(f"repo.full_name: {r.full_name}")
 
+print("⌛ Processing Tag Now")
+
 try:
     ref = r.get_git_ref(f"tags/{input_tag}")
+    print(f"ref.object.sha: {ref.object.sha}")
     if ref.object.sha != sha:
-        print(f"Updating: {input_tag} -> {ref.object.sha}")
+        print(f"Updating: {input_tag} -> {sha}")
         ref.edit(sha, True)
         result = "Updated"
     else:
@@ -60,20 +63,21 @@ with open(os.environ["GITHUB_OUTPUT"], "a") as f:
 # Summary
 # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary
 
-with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
-    print("### Python Test Action", file=f)
-    print(
-        f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`",
-        file=f,
-    )
-    print(
-        f"<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>{input_tag}</td></tr><tr><td>summary</td><td>{input_summary}</td></tr></table></details>\n",  # noqa: E501
-        file=f,
-    )
-    print(f"[Report an issue or request a feature]({r.html_url}/issues)", file=f)
+if input_summary in ["y", "yes", "true", "on"]:
+    with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+        print("### Python Test Action", file=f)
+        print(
+            f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`",
+            file=f,
+        )
+        print(
+            f"<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>{input_tag}</td></tr><tr><td>summary</td><td>{input_summary}</td></tr></table></details>\n",  # noqa: E501
+            file=f,
+        )
+        print(f"[Report an issue or request a feature]({r.html_url}/issues)", file=f)
 
 
-print("✅ \u001b[32;1mFinished Success")
+print("✅ \033[32;1mFinished Success")
 
 
 # Commands
@@ -81,3 +85,22 @@ print("✅ \u001b[32;1mFinished Success")
 # print("::notice::Notice Annotation")
 # print("::warning::Warning Annotation")
 # print("::error::Error Annotation")
+
+# Colors
+# print("\033[37;1m White Bold")
+# print("\033[36;1m Cyan Bold")
+# print("\033[35;1m Magenta Bold")
+# print("\033[34;1m Blue Bold")
+# print("\033[33;1m Yellow Bold")
+# print("\033[32;1m Green Bold")
+# print("\033[31;1m Red Bold")
+# print("\033[30;1m Grey Bold")
+# print("\033[37m White")
+# print("\033[36m Cyan")
+# print("\033[35m Magenta")
+# print("\033[34m Blue")
+# print("\033[33m Yellow")
+# print("\033[32m Green")
+# print("\033[31m Red")
+# print("\033[30m Grey")
+# print("\033[0m RESET")

@@ -20,8 +20,10 @@ jobs:
 
       - name: "Edit YAML"
         uses: Liam-Johnston/yaml-helper@V1
+        if: ${{ !github.event.act }}
         with:
           file-location: "action.yml"
+          create-if-does-not-exist: false
           content: |
             runs:
               image: src/Dockerfile
@@ -35,8 +37,8 @@ jobs:
       - name: "Validate Outputs"
         run: |
           echo "sha: '${{ steps.test.outputs.sha }}'"
-          if [ -z '${{ steps.test.outputs.sha }}' ];then
-            echo "No Output: sha"
+          if [ "${{ steps.test.outputs.sha }}" != "${GITHUB_SHA}" ];then
+            echo "Output Verification Failed: sha"
             exit 1
           fi
 
