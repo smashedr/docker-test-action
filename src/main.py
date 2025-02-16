@@ -2,9 +2,13 @@ import os
 from github import Github, Auth, GithubException
 
 
-with open("version.txt", "r") as file:
-    version = file.read().strip()
-print(f"🏳️ Starting Python Test Action {version}")
+if os.path.isfile("version.txt"):
+    with open("version.txt", "r") as file:
+        version = file.read().strip()
+else:
+    version = "Dev Build"
+print(f"version: '{version}'")
+print(f"🏳️ Starting Python Test Action - {version}")
 
 
 # Inputs
