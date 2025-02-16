@@ -23,9 +23,9 @@ jobs:
           set -e
           echo "Verifying Version TAG: ${GITHUB_REF_NAME}"
           echo "Checking: action.yaml"
-          grep "ghcr.io/cssnr/cloudflare-purge-cache-action:${GITHUB_REF_NAME}" action.yml
+          grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
           echo "Checking: build.sh"
-          grep "ghcr.io/cssnr/cloudflare-purge-cache-action:${GITHUB_REF_NAME}" build.sh
+          grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" build.sh
 
       - name: "Update Version Tags"
         id: version
