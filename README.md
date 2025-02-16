@@ -1,4 +1,4 @@
-[![Tags](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/tags.yaml?logo=github&logoColor=white&label=tags)](https://github.com/smashedr/docker-test-action/actions/workflows/tags.yaml)
+[![Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&logoColor=white&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_docker-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_docker-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=github)](https://github.com/smashedr/docker-test-action/releases/latest)
