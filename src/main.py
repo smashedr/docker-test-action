@@ -7,7 +7,6 @@ if os.path.isfile("version.txt"):
         version = file.read().strip()
 else:
     version = "Dev Build"
-print(f"version: '{version}'")
 print(f"🏳️ Starting Python Test Action - {version}")
 
 
