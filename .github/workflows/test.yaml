@@ -5,7 +5,7 @@ on:
   pull_request_target:
     branches: [master]
   push:
-    #branches: [master]
+    branches: [master]
 
 jobs:
   test:
@@ -28,11 +28,6 @@ jobs:
           content: |
             runs:
               image: src/Dockerfile
-
-      - name: "Debug"
-        run: |
-          head -n 12 src/main.py
-          cat action.yml
 
       - name: "Test Local Action"
         id: test
