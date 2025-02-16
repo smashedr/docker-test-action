@@ -29,6 +29,11 @@ jobs:
             runs:
               image: src/Dockerfile
 
+      - name: "Debug"
+        run: |
+          head -n 12 src/main.py
+          cat action.yml
+
       - name: "Test Local Action"
         id: test
         uses: ./
