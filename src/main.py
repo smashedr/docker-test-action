@@ -2,11 +2,7 @@ import os
 from github import Github, Auth, GithubException
 
 
-if os.path.isfile("version.txt"):
-    with open("version.txt", "r") as file:
-        version = file.read().strip()
-else:
-    version = "Dev Build"
+version = open("version.txt").read().strip() if os.path.isfile("version.txt") else "Dev Build"
 print(f"🏳️ Starting Python Test Action - {version}")
 
 
@@ -78,18 +74,9 @@ if input_summary in ["y", "yes", "true", "on"]:
 
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
         print("### Python Test Action", file=f)
-        print(
-            f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`",
-            file=f,
-        )
-        print(
-            f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n",
-            file=f,
-        )
-        print(
-            "[Report an issue or request a feature](https://github.com/smashedr/docker-test-action/issues)",
-            file=f,
-        )
+        print(f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`", file=f)
+        print(f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n", file=f)
+        print("[Report an issue or request a feature](https://github.com/smashedr/docker-test-action/issues)", file=f)
 
 
 print("✅ \033[32;1mFinished Success")
