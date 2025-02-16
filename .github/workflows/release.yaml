@@ -21,11 +21,9 @@ jobs:
       - name: "Verify Tags"
         run: |
           set -e
-          echo "Verifying Version TAG: ${GITHUB_REF_NAME}"
-          echo "Checking: action.yaml"
+          echo "Verifying Version TAG in action.yaml: ${GITHUB_REF_NAME}"
+          echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
           grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
-          echo "Checking: build.sh"
-          grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" build.sh
 
       - name: "Update Version Tags"
         id: version
