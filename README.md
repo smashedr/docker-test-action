@@ -102,13 +102,15 @@ jobs:
 
 # Development
 
+If you would like to submit a PR, please review the [CONTRIBUTING.md](CONTRIBUTING.md).
+
+You can test actions locally with: https://github.com/nektos/act
+
 1. Install `act`: https://nektosact.com/installation/index.html
 2. Create a `.secrets` file with: `GITHUB_TOKEN="ghp_xxx"`
 3. Run `act -j test`
 
 Note: You need to have a commit pushed as this makes a tag on GitHub for the current sha.
-
-To test the docker image locally you can simply run: [build.sh](build.sh)
 
 For advanced using with things like secrets, variables and context see: https://nektosact.com/usage/index.html
 
