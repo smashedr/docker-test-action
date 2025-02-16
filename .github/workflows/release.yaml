@@ -1,4 +1,4 @@
-name: "Build"
+name: "Release"
 
 on:
   release:
@@ -22,13 +22,13 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Version Tags"
-        id: version
-        uses: cssnr/update-version-tags-action@skip
-        with:
-          write: false
+      # TODO: Add step to verify version in version.txt and action.yaml
 
-      - name: "Docker Tags"
+      - name: "Update Version Tags"
+        id: version
+        uses: cssnr/update-version-tags-action@v1
+
+      - name: "Set Docker Tags"
         id: tags
         uses: smashedr/docker-tags-action@master
         with:
@@ -36,7 +36,7 @@ jobs:
           extra: ${{ steps.version.outputs.tags }}
           latest: false
 
-      - name: "Echo Tags"
+      - name: "Debug Tags"
         run: |
           echo "tags: '${{ steps.tags.outputs.tags }}'"
 

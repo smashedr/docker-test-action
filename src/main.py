@@ -8,7 +8,7 @@ print("🏳️ Starting Python Test Action")
 
 input_tag = os.environ.get("INPUT_TAG", "").strip()
 print(f"input_tag: \033[36;1m{input_tag}")
-input_summary = os.environ.get("INPUT_SUMMARY", "").strip()
+input_summary = os.environ.get("INPUT_SUMMARY", "").strip().lower()
 print(f"input_summary: \033[36;1m{input_summary}")
 input_token = os.environ.get("INPUT_TOKEN", "").strip()
 print(f"input_token: \033[36;1m{input_token}")
@@ -64,6 +64,12 @@ with open(os.environ["GITHUB_OUTPUT"], "a") as f:
 # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary
 
 if input_summary in ["y", "yes", "true", "on"]:
+    inputs_table = ["<table><tr><th>Input</th><th>Value</th></tr>"]
+    for x in ["tag", "summary"]:
+        value = globals()[f"input_{x}"]
+        inputs_table.append(f"<tr><td>{x}</td><td>{value or '-'}</td></tr>")
+    inputs_table.append("</table>")
+
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
         print("### Python Test Action", file=f)
         print(
@@ -71,7 +77,7 @@ if input_summary in ["y", "yes", "true", "on"]:
             file=f,
         )
         print(
-            f"<details><summary>Inputs</summary><table><tr><th>Input</th><th>Value</th></tr><tr><td>tag</td><td>{input_tag}</td></tr><tr><td>summary</td><td>{input_summary}</td></tr></table></details>\n",  # noqa: E501
+            f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n",
             file=f,
         )
         print(
@@ -88,6 +94,7 @@ print("✅ \033[32;1mFinished Success")
 # print("::notice::Notice Annotation")
 # print("::warning::Warning Annotation")
 # print("::error::Error Annotation")
+
 
 # Colors
 # print("\033[37;1m White Bold")
