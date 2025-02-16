@@ -20,6 +20,7 @@ jobs:
 
       - name: "Verify Tags"
         run: |
+          set -e
           echo "Verifying Version TAG: ${GITHUB_REF_NAME}"
           echo "Checking: action.yaml"
           grep "ghcr.io/cssnr/cloudflare-purge-cache-action:${GITHUB_REF_NAME}" action.yml
@@ -54,6 +55,10 @@ jobs:
       - name: "Echo Tags"
         run: |
           echo "tags: '${{ needs.tags.outputs.tags }}'"
+
+      - name: "Write Version"
+        run: |
+          echo -n "${GITHUB_REF_NAME}" > src/version.txt
 
       - name: "Docker Login"
         uses: docker/login-action@v3
