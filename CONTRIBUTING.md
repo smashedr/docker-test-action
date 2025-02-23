@@ -5,12 +5,12 @@
 
 You should be using an IDE, otherwise start there...
 
-Formatting (this is done by you):
+Formatting:
 
 - Black (.py)
 - Prettier (.yml;.yaml;.json;.md)
 
-Linting (this is checked by actions):
+Linting:
 
 - Flake8 (.py)
 - ShellCheck (.sh)
