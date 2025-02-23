@@ -53,6 +53,7 @@ jobs:
         run: |
           echo tags:\n'${{ steps.tags.outputs.tags }}'
           echo labels:\n'${{ steps.tags.outputs.labels }}'
+          echo annotations:\n'${{ steps.tags.outputs.annotations }}'
 
       - name: "Docker Login"
         uses: docker/login-action@v3
@@ -73,6 +74,7 @@ jobs:
           push: true
           tags: ${{ steps.tags.outputs.tags }}
           labels: ${{ steps.tags.outputs.labels }}
+          annotations: ${{ steps.tags.outputs.annotations }}
           #platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -86,9 +88,6 @@ jobs:
       contents: write
 
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v4
-
       - name: "Update Version Tags"
         id: tags
         uses: cssnr/update-version-tags-action@v1
