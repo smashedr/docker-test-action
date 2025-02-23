@@ -1,5 +1,6 @@
 import os
-from github import Github, Auth, GithubException
+
+from github import Auth, Github, GithubException
 
 
 version = os.environ.get("GITHUB_REF_NAME", "Local Source")
@@ -26,8 +27,8 @@ print("::endgroup::")  # Parsed Inputs
 
 print("::group::Get Repository")
 
-owner = os.environ.get("GITHUB_REPOSITORY").split("/")[0]
-repo = os.environ.get("GITHUB_REPOSITORY").split("/")[1]
+owner: str = os.environ["GITHUB_REPOSITORY"].split("/")[0]
+repo: str = os.environ["GITHUB_REPOSITORY"].split("/")[1]
 print(f"owner: {owner}")
 print(f"repo: {repo}")
 
@@ -43,7 +44,7 @@ print("::endgroup::")  # Repository
 
 print("⌛ Processing Tag Now")
 
-sha = os.environ.get("GITHUB_SHA")
+sha: str = os.environ["GITHUB_SHA"]
 print(f"sha: \033[35;1m{sha}")
 
 print("::group::Results")

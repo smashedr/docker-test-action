@@ -2,9 +2,7 @@ name: "Test"
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
-    branches: [master]
 
 jobs:
   test:
@@ -45,34 +43,3 @@ jobs:
             echo "Output Verification Failed: sha"
             exit 1
           fi
-
-  lint:
-    name: "Lint"
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v4
-
-      - name: "Install"
-        id: install
-        run: |
-          npm install prettier
-
-      - name: "Ruff"
-        if: ${{ steps.install.outcome == 'success' }}
-        uses: astral-sh/ruff-action@v3
-        with:
-          src: "src"
-
-      - name: "Black"
-        if: ${{ steps.install.outcome == 'success' }}
-        uses: psf/black@stable
-        with:
-          src: "src"
-
-      - name: "Prettier"
-        if: ${{ steps.install.outcome == 'success' }}
-        run: |
-          npx prettier --check .
