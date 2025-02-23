@@ -1,5 +1,6 @@
 import os
-from github import Github, Auth, GithubException
+
+from github import Auth, Github, GithubException
 
 
 version = os.environ.get("GITHUB_REF_NAME", "Local Source")
@@ -43,7 +44,7 @@ print("::endgroup::")  # Repository
 
 print("⌛ Processing Tag Now")
 
-sha: list = os.environ["GITHUB_SHA"]
+sha: str = os.environ["GITHUB_SHA"]
 print(f"sha: \033[35;1m{sha}")
 
 print("::group::Results")
