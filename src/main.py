@@ -22,12 +22,9 @@ print(f"input_token: \033[36;1m{input_token}")
 print("::endgroup::")  # Parsed Inputs
 
 
-# Variables
+# Repository
 
-sha = os.environ.get("GITHUB_SHA")
-print(f"sha: \033[35;1m{sha}")
-
-print("::group::Repository")
+print("::group::Get Repository")
 
 owner = os.environ.get("GITHUB_REPOSITORY").split("/")[0]
 repo = os.environ.get("GITHUB_REPOSITORY").split("/")[1]
@@ -45,6 +42,10 @@ print("::endgroup::")  # Repository
 # Action
 
 print("⌛ Processing Tag Now")
+
+sha = os.environ.get("GITHUB_SHA")
+print(f"sha: \033[35;1m{sha}")
+
 print("::group::Results")
 
 try:
@@ -75,6 +76,7 @@ print("::endgroup::")  # Results
 # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+    # noinspection PyTypeChecker
     print(f"sha={sha}", file=f)
 
 
@@ -89,10 +91,14 @@ if input_summary in ["y", "yes", "true", "on"]:
     inputs_table.append("</table>")
 
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+        # noinspection PyTypeChecker
         print("## Python Test Action", file=f)
+        # noinspection PyTypeChecker
         print(f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`", file=f)
+        # noinspection PyTypeChecker
         print(f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n", file=f)
         repo = "https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme"
+        # noinspection PyTypeChecker
         print(f"\n[Report an issue or request a feature]({repo})\n\n---", file=f)
 
 
