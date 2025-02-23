@@ -10,22 +10,23 @@
 
 # Docker Test Action
 
-This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
-
-This includes inputs, outputs, job summary, and automatic token authentication.
-
 - [Inputs](#Inputs)
+  - [Permissions](#Permissions)
 - [Outputs](#Outputs)
 - [Examples](#Examples)
 - [Development](#Development)
 
+This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
+
+This includes inputs, outputs, job summary, and automatic token authentication.
+
 ## Inputs
 
 | input   | required | default               | description                 |
-| ------- | -------- | --------------------- | --------------------------- |
-| tag     | No       | test                  | Tag to Create or Update     |
-| summary | No       | true                  | Add Summary to Job          |
-| token   | No       | `${{ github.token }}` | Only if External Token [^1] |
+| ------- | :------: | --------------------- | --------------------------- |
+| tag     |    -     | `test`                | Tag to Create or Update     |
+| summary |    -     | `true`                | Add Summary to Job          |
+| token   |    -     | `${{ github.token }}` | Only if External Token [^1] |
 
 With no inputs this will create/update the tag `test`.
 

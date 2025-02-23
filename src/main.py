@@ -2,7 +2,11 @@ import os
 from github import Github, Auth, GithubException
 
 
-version = open("version.txt").read().strip() if os.path.isfile("version.txt") else "Dev Build"
+version = "Dev Build"
+if os.path.isfile("/src/version.txt"):
+    with open("/src/version.txt", "r") as f:
+        version = f.read().strip()
+
 print(f"🏳️ Starting Python Test Action - {version}")
 
 
@@ -84,10 +88,13 @@ print("✅ \033[32;1mFinished Success")
 
 # Commands
 # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
+# print("::debug::Debug Message")
 # print("::notice::Notice Annotation")
 # print("::warning::Warning Annotation")
 # print("::error::Error Annotation")
-
+# print("::add-mask::Mask Output")
+# print("::group::Start Group")
+# print("::endgroup::End Group")
 
 # Colors
 # print("\033[37;1m White Bold")
