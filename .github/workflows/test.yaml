@@ -37,7 +37,7 @@ jobs:
         id: test
         uses: ./
         with:
-          tag: "test"
+          tag: "test-tag"
 
       - name: "Validate Outputs"
         run: |
