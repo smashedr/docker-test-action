@@ -55,22 +55,36 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
+      - name: "Setup Python 3.13"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
       - name: "Install"
         id: install
         run: |
           npm install prettier
+          python -m pip install -U pip
+          python -m pip install -Ur requirements.txt
+          python -m pip install -e .
 
       - name: "Ruff"
         if: ${{ steps.install.outcome == 'success' }}
         uses: astral-sh/ruff-action@v3
-        with:
-          src: "src"
 
       - name: "Black"
         if: ${{ steps.install.outcome == 'success' }}
         uses: psf/black@stable
-        with:
-          src: "src"
+
+      - name: "Mypy"
+        if: ${{ steps.install.outcome == 'success' }}
+        run: |
+          mypy src
+
+      - name: "Isort"
+        if: ${{ steps.install.outcome == 'success' }}
+        uses: isort/isort-action@v1
 
       - name: "Prettier"
         if: ${{ steps.install.outcome == 'success' }}
