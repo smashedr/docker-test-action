@@ -2,36 +2,51 @@ import os
 from github import Github, Auth, GithubException
 
 
-version = open("version.txt").read().strip() if os.path.isfile("version.txt") else "Dev Build"
+version = os.environ.get("GITHUB_REF_NAME", "Local Source")
+if os.path.isfile("/src/version.txt"):
+    with open("/src/version.txt", "r") as f:
+        version = f.read().strip()
+
 print(f"🏳️ Starting Python Test Action - {version}")
 
 
 # Inputs
 
+print("::group::Parsed Inputs")
 input_tag = os.environ.get("INPUT_TAG", "").strip()
 print(f"input_tag: \033[36;1m{input_tag}")
 input_summary = os.environ.get("INPUT_SUMMARY", "").strip().lower()
 print(f"input_summary: \033[36;1m{input_summary}")
 input_token = os.environ.get("INPUT_TOKEN", "").strip()
 print(f"input_token: \033[36;1m{input_token}")
+print("::endgroup::")  # Parsed Inputs
+
+
+# Repository
+
+print("::group::Get Repository")
 
 owner = os.environ.get("GITHUB_REPOSITORY").split("/")[0]
 repo = os.environ.get("GITHUB_REPOSITORY").split("/")[1]
 print(f"owner: {owner}")
 print(f"repo: {repo}")
 
-sha = os.environ.get("GITHUB_SHA")
-print(f"sha: \033[35;1m{sha}")
-
-
-# Action
-
 g = Github(auth=Auth.Token(input_token))
 r = g.get_repo(f"{owner}/{repo}")
 print(f"repo.name: {r.name}")
 print(f"repo.full_name: {r.full_name}")
 
+print("::endgroup::")  # Repository
+
+
+# Action
+
 print("⌛ Processing Tag Now")
+
+sha = os.environ.get("GITHUB_SHA")
+print(f"sha: \033[35;1m{sha}")
+
+print("::group::Results")
 
 try:
     ref = r.get_git_ref(f"tags/{input_tag}")
@@ -54,11 +69,14 @@ g.close()
 print(f"ref.ref: {ref.ref}")
 print(f"ref.object.sha: {ref.object.sha}")
 
+print("::endgroup::")  # Results
+
 
 # Outputs
 # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
 with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+    # noinspection PyTypeChecker
     print(f"sha={sha}", file=f)
 
 
@@ -73,10 +91,15 @@ if input_summary in ["y", "yes", "true", "on"]:
     inputs_table.append("</table>")
 
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
-        print("### Python Test Action", file=f)
+        # noinspection PyTypeChecker
+        print("## Python Test Action", file=f)
+        # noinspection PyTypeChecker
         print(f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`", file=f)
+        # noinspection PyTypeChecker
         print(f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n", file=f)
-        print("[Report an issue or request a feature](https://github.com/smashedr/docker-test-action/issues)", file=f)
+        repo = "https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme"
+        # noinspection PyTypeChecker
+        print(f"\n[Report an issue or request a feature]({repo})\n\n---", file=f)
 
 
 print("✅ \033[32;1mFinished Success")
@@ -84,9 +107,13 @@ print("✅ \033[32;1mFinished Success")
 
 # Commands
 # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
+# print("::debug::Debug Message")
 # print("::notice::Notice Annotation")
 # print("::warning::Warning Annotation")
 # print("::error::Error Annotation")
+# print("::add-mask::Masked Output")
+# print("::group::Group Name")
+# print("::endgroup::")
 
 
 # Colors
