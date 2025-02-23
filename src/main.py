@@ -7,7 +7,7 @@ if os.path.isfile("/src/version.txt"):
     with open("/src/version.txt", "r") as f:
         version = f.read().strip()
 
-print(f"🏳️ Starting Python Test Action - {version}")
+print(f"🏳️ Starting Python Test Action DEBUG - {version}")
 
 
 # Inputs
