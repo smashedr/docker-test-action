@@ -89,15 +89,12 @@ if input_summary in ["y", "yes", "true", "on"]:
         "tag": input_tag,
         "summary": input_summary,
     }
-    print(dump(inputs))
-
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
         # noinspection PyTypeChecker
         print("## Python Test Action", file=f)
         # noinspection PyTypeChecker
         print(f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`", file=f)
         # noinspection PyTypeChecker
-        # print(f'<details><summary>Inputs</summary><pre lang="text"><code>{dump(inputs)}</details>\n', file=f)
         print(
             f"<details><summary>Inputs</summary><pre lang='yaml'><code>{dump(inputs)}</code></pre></details>\n", file=f
         )
