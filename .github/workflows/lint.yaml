@@ -40,14 +40,14 @@ jobs:
         if: ${{ always() }}
         uses: psf/black@stable
 
+      - name: "Isort"
+        if: ${{ always() }}
+        uses: isort/isort-action@v1
+
       - name: "Mypy"
         if: ${{ always() }}
         run: |
           mypy src
-
-      - name: "Isort"
-        if: ${{ always() }}
-        uses: isort/isort-action@v1
 
       - name: "Prettier"
         if: ${{ always() }}
