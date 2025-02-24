@@ -33,6 +33,7 @@ jobs:
           python -m pip install -U pip
           python -m pip install -Ur requirements.txt
           python -m pip install -e .
+          exit 1
 
       - name: "Ruff"
         if: ${{ always() && steps.install.outcome == 'success' }}
@@ -46,7 +47,6 @@ jobs:
         if: ${{ always() && steps.install.outcome == 'success' }}
         run: |
           mypy src
-          exit 1
 
       - name: "Isort"
         if: ${{ always() && steps.install.outcome == 'success' }}
