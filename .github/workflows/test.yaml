@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   push:
 
+env:
+  TAG: "test-tag"
+
 jobs:
   test:
     name: "Test"
@@ -34,7 +37,7 @@ jobs:
         id: test
         uses: ./
         with:
-          tag: "test-tag"
+          tag: ${{ env.TAG }}
 
       - name: "Validate Outputs"
         run: |
@@ -43,3 +46,7 @@ jobs:
             echo "Output Verification Failed: sha"
             exit 1
           fi
+
+      #- name: "Cleanup Tag"
+      #  run: |
+      #    git push origin :refs/tags/${{ env.TAG }}

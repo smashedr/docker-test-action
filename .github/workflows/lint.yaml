@@ -35,23 +35,24 @@ jobs:
           python -m pip install -e .
 
       - name: "Ruff"
-        if: ${{ always() }}
+        if: ${{ always() && steps.install.outcome == 'success' }}
         uses: astral-sh/ruff-action@v3
 
       - name: "Black"
-        if: ${{ always() }}
+        if: ${{ always() && steps.install.outcome == 'success' }}
         uses: psf/black@stable
 
       - name: "Mypy"
-        if: ${{ always() }}
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: |
           mypy src
+          exit 1
 
       - name: "Isort"
-        if: ${{ always() }}
+        if: ${{ always() && steps.install.outcome == 'success' }}
         uses: isort/isort-action@v1
 
       - name: "Prettier"
-        if: ${{ always() }}
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: |
           npx prettier --check .

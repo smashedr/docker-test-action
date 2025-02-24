@@ -99,7 +99,7 @@ if input_summary in ["y", "yes", "true", "on"]:
         # noinspection PyTypeChecker
         # print(f'<details><summary>Inputs</summary><pre lang="text"><code>{dump(inputs)}</details>\n', file=f)
         print(
-            f"<details><summary>Inputs</summary><pre lang='text'><code>{dump(inputs)}</code></pre></details>\n", file=f
+            f"<details><summary>Inputs</summary><pre lang='yaml'><code>{dump(inputs)}</code></pre></details>\n", file=f
         )
         repo = "https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme"
         # noinspection PyTypeChecker
