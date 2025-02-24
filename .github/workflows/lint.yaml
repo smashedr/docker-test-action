@@ -27,31 +27,31 @@ jobs:
           cache: "pip"
 
       - name: "Install"
-        id: install
         run: |
-          npm install prettier
           python -m pip install -U pip
           python -m pip install -Ur requirements.txt
           python -m pip install -e .
 
       - name: "Ruff"
-        if: ${{ always() && steps.install.outcome == 'success' }}
+        if: ${{ always() }}
         uses: astral-sh/ruff-action@v3
 
       - name: "Black"
-        if: ${{ always() && steps.install.outcome == 'success' }}
+        if: ${{ always() }}
         uses: psf/black@stable
 
       - name: "Mypy"
-        if: ${{ always() && steps.install.outcome == 'success' }}
+        if: ${{ always() }}
         run: |
+          mypy --install-types
           mypy src
 
       - name: "Isort"
-        if: ${{ always() && steps.install.outcome == 'success' }}
+        if: ${{ always() }}
         uses: isort/isort-action@v1
 
       - name: "Prettier"
-        if: ${{ always() && steps.install.outcome == 'success' }}
+        if: ${{ always() }}
         run: |
+          npm install prettier
           npx prettier --check .
