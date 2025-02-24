@@ -1,13 +1,13 @@
 import os
+from yaml import dump
 
 from github import Auth, Github, GithubException
 
 
-version = os.environ.get("GITHUB_REF_NAME", "Local Source")
+version = os.environ.get("GITHUB_ACTION_REF", "Local Source")
 if os.path.isfile("/src/version.txt"):
     with open("/src/version.txt", "r") as f:
         version = f.read().strip()
-
 print(f"🏳️ Starting Python Test Action - {version}")
 
 
@@ -85,11 +85,11 @@ with open(os.environ["GITHUB_OUTPUT"], "a") as f:
 # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#adding-a-job-summary
 
 if input_summary in ["y", "yes", "true", "on"]:
-    inputs_table = ["<table><tr><th>Input</th><th>Value</th></tr>"]
-    for x in ["tag", "summary"]:
-        value = globals()[f"input_{x}"]
-        inputs_table.append(f"<tr><td>{x}</td><td>{value or '-'}</td></tr>")
-    inputs_table.append("</table>")
+    inputs = {
+        "tag": input_tag,
+        "summary": input_summary,
+    }
+    print(dump(inputs))
 
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
         # noinspection PyTypeChecker
@@ -97,7 +97,10 @@ if input_summary in ["y", "yes", "true", "on"]:
         # noinspection PyTypeChecker
         print(f"{result}: [{ref.ref}]({r.html_url}/releases/tag/{input_tag}) ➡️ `{sha}`", file=f)
         # noinspection PyTypeChecker
-        print(f"<details><summary>Inputs</summary>{''.join(inputs_table)}</details>\n", file=f)
+        # print(f'<details><summary>Inputs</summary><pre lang="text"><code>{dump(inputs)}</details>\n', file=f)
+        print(
+            f"<details><summary>Inputs</summary><pre lang='text'><code>{dump(inputs)}</code></pre></details>\n", file=f
+        )
         repo = "https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme"
         # noinspection PyTypeChecker
         print(f"\n[Report an issue or request a feature]({repo})\n\n---", file=f)
