@@ -1,3 +1,2 @@
 PyGitHub
 pyyaml
-types-PyYAML
