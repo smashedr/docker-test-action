@@ -4,4 +4,4 @@ mypy
 PyGitHub
 pyyaml
 ruff
-#types-PyYAML
+types-PyYAML
