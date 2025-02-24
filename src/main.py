@@ -1,7 +1,7 @@
 import os
-from yaml import dump
 
 from github import Auth, Github, GithubException
+from yaml import dump
 
 
 version = os.environ.get("GITHUB_ACTION_REF", "Local Source")
