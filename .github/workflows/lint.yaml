@@ -43,7 +43,6 @@ jobs:
       - name: "Mypy"
         if: ${{ always() }}
         run: |
-          mypy --install-types
           mypy src
 
       - name: "Isort"
