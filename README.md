@@ -1,5 +1,6 @@
 [![Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&logoColor=white&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
+[![Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=github&logoColor=white&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_docker-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_docker-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=github)](https://github.com/smashedr/docker-test-action/releases/latest)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/docker-test-action?logo=github&logoColor=white&label=updated)](https://github.com/smashedr/docker-test-action/graphs/commit-activity)
@@ -22,11 +23,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| input   | required | default               | description                 |
-| ------- | :------: | --------------------- | --------------------------- |
-| tag     |    -     | `test`                | Tag to Create or Update     |
-| summary |    -     | `true`                | Add Summary to Job          |
-| token   |    -     | `${{ github.token }}` | Only if External Token [^1] |
+| input   | required | default               | description              |
+| ------- | :------: | --------------------- | ------------------------ |
+| tag     |    -     | `test`                | Tag to Create or Update  |
+| summary |    -     | `true`                | Add a Job Summary        |
+| token   |    -     | `${{ github.token }}` | To Use a Custom PAT [^1] |
 
 With no inputs this will create/update the tag `test`.
 
@@ -43,7 +44,7 @@ With all inputs. Note that `token` is NOT required.
   with:
     tag: test
     summary: true
-    token: ${{ secrets.PAT }} # only include this if you need to use a PAT
+    token: ${{ secrets.GH_PAT }} # only for using a custom PAT
 ```
 
 ### Permissions
@@ -124,4 +125,5 @@ To use a locally built image enable offline mode: `--action-offline-mode`
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
-    This is only available to allow users to pass a different token they have created and defined in their `secrets`.
+    The only purpose of this input is to allow passing a PAT that was manually created and added to secrets.
+    This is required for some actions that the automatic workflow token does not allow.

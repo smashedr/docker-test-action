@@ -5,31 +5,41 @@ on:
     types: [published]
 
 jobs:
-  #checks:
-  #  name: "Checks"
-  #  runs-on: ubuntu-latest
-  #  timeout-minutes: 5
-  #
-  #  steps:
-  #    - name: "Checkout"
-  #      uses: actions/checkout@v4
-  #
-  #    #- name: "Debug event.json"
-  #    #  run: |
-  #    #    cat "${GITHUB_EVENT_PATH}"
-  #
-  #    - name: "Check Action Image"
-  #      run: |
-  #        set -e
-  #        echo "Verifying Version TAG in action.yaml: ${GITHUB_REF_NAME}"
-  #        echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
-  #        grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
+  checks:
+    name: "Checks"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      #- name: "Debug event.json"
+      #  run: |
+      #    cat "${GITHUB_EVENT_PATH}"
+
+      - name: "Check Action Image"
+        run: |
+          set -e
+          echo "Verifying Version TAG in action.yaml: ${GITHUB_REF_NAME}"
+          echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
+          grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
+
+      - name: "Failed Check"
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          echo "Deleting Release Tag: ${{ github.ref_name }}"
+          gh release delete ${{ github.ref_name }}
+          echo "Deleting Tag: refs/tags/${{ github.ref_name }}"
+          git push origin :refs/tags/${{ github.ref_name }}
 
   build:
     name: "Build"
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    #needs: [checks]
+    needs: [checks]
     permissions:
       packages: write
 

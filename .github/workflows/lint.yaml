@@ -27,9 +27,7 @@ jobs:
           cache: "pip"
 
       - name: "Install"
-        id: install
         run: |
-          npm install prettier
           python -m pip install -U pip
           python -m pip install -Ur requirements.txt
           python -m pip install -e .
@@ -42,16 +40,17 @@ jobs:
         if: ${{ always() }}
         uses: psf/black@stable
 
+      - name: "Isort"
+        if: ${{ always() }}
+        uses: isort/isort-action@v1
+
       - name: "Mypy"
         if: ${{ always() }}
         run: |
           mypy src
 
-      - name: "Isort"
-        if: ${{ always() }}
-        uses: isort/isort-action@v1
-
       - name: "Prettier"
         if: ${{ always() }}
         run: |
+          npm install prettier
           npx prettier --check .
