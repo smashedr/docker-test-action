@@ -4,7 +4,7 @@ from github import Auth, Github, GithubException
 from yaml import dump
 
 
-version = os.environ.get("GITHUB_ACTION_REF", "Local Source")
+version = os.environ.get("GITHUB_ACTION_REF") or "Local Source"
 if os.path.isfile("/src/version.txt"):
     with open("/src/version.txt", "r") as f:
         version = f.read().strip()
