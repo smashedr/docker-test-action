@@ -23,11 +23,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| input   | required | default               | description              |
-| ------- | :------: | --------------------- | ------------------------ |
-| tag     |    -     | `test`                | Tag to Create or Update  |
-| summary |    -     | `true`                | Add a Job Summary        |
-| token   |    -     | `${{ github.token }}` | To Use a Custom PAT [^1] |
+| input   | required | default               | description             |
+| ------- | :------: | --------------------- | ----------------------- |
+| tag     |    -     | `test`                | Tag to Create or Update |
+| summary |    -     | `true`                | Add a Job Summary       |
+| token   |    -     | `${{ github.token }}` | Only for PAT [^1]       |
 
 With no inputs this will create/update the tag `test`.
 

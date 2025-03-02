@@ -100,7 +100,7 @@ if input_summary in ["y", "yes", "true", "on"]:
         )
         repo = "https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme"
         # noinspection PyTypeChecker
-        print(f"\n[Report an issue or request a feature]({repo})\n\n---", file=f)
+        print(f"\n[View Documentation, Report Issues or Request Features]({repo})\n\n---", file=f)
 
 
 print("✅ \033[32;1mFinished Success")
