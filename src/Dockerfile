@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.13-alpine
 
 LABEL org.opencontainers.image.source="https://github.com/smashedr/docker-test-action"
 LABEL org.opencontainers.image.description="Docker Test Action"

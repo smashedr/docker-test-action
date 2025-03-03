@@ -5,8 +5,8 @@ on:
     types: [published]
 
 jobs:
-  checks:
-    name: "Checks"
+  verify:
+    name: "Verify"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -18,14 +18,14 @@ jobs:
       #  run: |
       #    cat "${GITHUB_EVENT_PATH}"
 
-      - name: "Check Action Image"
+      - name: "Verify Action Tag"
         run: |
           set -e
           echo "Verifying Version TAG in action.yaml: ${GITHUB_REF_NAME}"
           echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
           grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
 
-      - name: "Failed Check"
+      - name: "Verify Failed - Rollback"
         if: ${{ failure() }}
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
@@ -39,7 +39,7 @@ jobs:
     name: "Build"
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: [checks]
+    needs: [verify]
     permissions:
       packages: write
 
