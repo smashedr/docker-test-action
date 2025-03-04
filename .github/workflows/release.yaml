@@ -35,6 +35,12 @@ jobs:
           #echo "Deleting Tag: refs/tags/${{ github.ref_name }}"
           #git push origin :refs/tags/${{ github.ref_name }}
 
+      - name: "Schedule Failure Notification"
+        if: ${{ failure() }}
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+
   build:
     name: "Build"
     runs-on: ubuntu-latest
