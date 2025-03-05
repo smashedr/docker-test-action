@@ -12,7 +12,7 @@ on:
       - "src/**"
       - ".github/workflows/test.yaml"
       - "package*.json"
-      - "action.yaml"
+      - "action.yml"
 
 env:
   TAG: "test-tag"
