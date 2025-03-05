@@ -53,7 +53,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      - name: "Write Version"
+      - name: "Write Version: ${{ github.ref_name }}"
         run: |
           echo "version: ${GITHUB_REF_NAME}"
           echo -n "${GITHUB_REF_NAME}" > src/version.txt
@@ -63,7 +63,6 @@ jobs:
         uses: smashedr/docker-tags-action@master
         with:
           images: "ghcr.io/${{ github.repository }}"
-          latest: false
 
       - name: "Echo Tags"
         run: |
