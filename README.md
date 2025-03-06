@@ -21,6 +21,8 @@ This action creates or updates the provided `tag` to the `sha` has that triggere
 
 This includes inputs, outputs, job summary, and automatic token authentication.
 
+If you are creating a Docker based action with a built image, use this template!
+
 ## Inputs
 
 | input   | required | default               | description             |
