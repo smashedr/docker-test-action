@@ -1,0 +1,71 @@
+name: "Create Release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version Tag to Release"
+        required: true
+
+env:
+  action: action.yml
+
+jobs:
+  update:
+    name: "Update"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      #- name: "Debug event.json"
+      #  run: |
+      #    cat "${GITHUB_EVENT_PATH}"
+
+      - name: "Check Action Tag"
+        id: check
+        continue-on-error: true
+        run: |
+          echo "Checking Version TAG in ${{ env.action }}: ${GITHUB_REF_NAME}"
+          echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
+          grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" ${{ env.action }}
+
+      - name: "Update ${{ env.action }}"
+        if: ${{ steps.check.outcome == 'failure' }}
+        uses: Liam-Johnston/yaml-helper@V1
+        with:
+          file-location: ${{ env.action }}
+          create-if-does-not-exist: false
+          content: |
+            runs:
+              image: "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
+
+      - name: "Debug ${{ env.action }}"
+        if: ${{ steps.check.outcome == 'failure' }}
+        run: |
+          cat ${{ env.action }}
+
+      - name: "Commit files"
+        if: ${{ steps.check.outcome == 'failure' }}
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Bump Version on ${{ env.action }}"
+
+      - name: "Push changes"
+        if: ${{ steps.check.outcome == 'failure' }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+
+      # TODO: This will not trigger the release.yaml workflow and would require merging the two...
+      - name: "Create Release"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create ${{ inputs.version }} --latest --generate-notes --fail-on-no-commits
