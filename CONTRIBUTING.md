@@ -3,17 +3,7 @@
 > [!WARNING]  
 > This guide is a work in progress and may not be complete.
 
-You should be using an IDE, otherwise start there...
-
-Formatting:
-
-- Black (.py)
-- Prettier (.yml;.yaml;.json;.md)
-
-Linting:
-
-- Flake8 (.py)
-- ShellCheck (.sh)
+This is a basic contributing guide and is a work in progress.
 
 ## Workflow
 
@@ -47,11 +37,10 @@ To run actions locally you need to install act: https://nektosact.com/installati
 Note: You need to have your current commit pushed as this makes a tag on GitHub to the current sha.
 This means the `test` will most likely fail on a third-party PR since the automatic GITHUB_TOKEN won't have write access to content.
 
-The `test` updates the [action.yml](action.yml) to use the [Dockerfile](Dockerfile).
+The `test` ephemerally updates the [action.yml](action.yml) to use the [Dockerfile](Dockerfile).
 This ensures the test will always use your local changes.
 
 To test the docker image, you need to build an image with a tag matching the [action.yml](action.yml)
-image and run act with `--action-offline-mode`.
-This script does it all for you, just run: [build.sh](build.sh)
+image and run act with `--action-offline-mode`. This script does it all for you, just run: [build.sh](build.sh)
 
 To see all available jobs run: `act -l`
