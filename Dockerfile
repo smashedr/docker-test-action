@@ -10,8 +10,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 #COPY --from=python /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 #COPY --from=python /usr/local/bin/ /usr/local/bin/
 
-COPY requirements.txt .
-RUN python -m pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt /
+RUN python -m pip install --no-cache-dir -r /requirements.txt
 
 COPY src /src
 ENTRYPOINT ["python", "/src/main.py"]
