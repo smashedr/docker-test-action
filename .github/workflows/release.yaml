@@ -23,7 +23,7 @@ jobs:
       - name: "Verify Action Tag"
         run: |
           set -e
-          echo "Verifying Version TAG in action.yaml: ${GITHUB_REF_NAME}"
+          echo "Verifying Version TAG in action.yml: ${GITHUB_REF_NAME}"
           echo "image: ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}"
           grep "ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_REF_NAME}" action.yml
 
@@ -85,7 +85,7 @@ jobs:
       - name: "Build and Push"
         uses: docker/build-push-action@v6
         with:
-          context: src
+          context: .
           push: true
           tags: ${{ steps.tags.outputs.tags }}
           labels: ${{ steps.tags.outputs.labels }}

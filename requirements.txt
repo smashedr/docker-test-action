@@ -1,8 +1,2 @@
-black
-flake8
-isort
-mypy
-PyGitHub
-pyyaml
-ruff
-types-PyYAML
+PyGitHub>=2,<3
+pyyaml>=6,<7
