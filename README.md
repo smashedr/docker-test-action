@@ -2,6 +2,7 @@
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
 [![Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=github&logoColor=white&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_docker-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_docker-test-action)
+[![GHCR Size](https://ghcr-badge.egpl.dev/smashedr/docker-test-action/size)](https://github.com/users/smashedr/packages/container/package/docker-test-action)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=github)](https://github.com/smashedr/docker-test-action/releases/latest)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/docker-test-action?logo=github&logoColor=white&label=updated)](https://github.com/smashedr/docker-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/docker-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/docker-test-action)
