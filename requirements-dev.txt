@@ -6,4 +6,5 @@ mypy
 PyGitHub
 pyyaml
 ruff
+yamllint
 types-PyYAML
