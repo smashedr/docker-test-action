@@ -88,7 +88,9 @@ jobs:
         if: ${{ always() && !cancelled() }}
         run: |
           echo "::group::Download"
-          tag=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i '^location:' | sed -E 's|.*/tag/v?(.*)|\1|' | tr -d '\t\r\n')
+          loc=$(curl -sI https://github.com/rhysd/actionlint/releases/latest | grep -i '^location:')
+          echo "loc: ${loc}"
+          tag=$(echo "${loc}" | sed -E 's|.*/tag/v?(.*)|\1|' | tr -d '\t\r\n')
           echo "tag: ${tag}"
           url="https://github.com/rhysd/actionlint/releases/latest/download/actionlint_${tag}_linux_amd64.tar.gz"
           echo "url: ${url}"
@@ -97,3 +99,12 @@ jobs:
           "${RUNNER_TEMP}/actionlint" --version
           echo "::endgroup::"
           "${RUNNER_TEMP}/actionlint" -color -verbose -shellcheck= -pyflakes=
+
+      #- name: "Vale"
+      #  if: ${{ always() && !cancelled() }}
+      #  uses: errata-ai/vale-action@v2.1.1
+
+      #- name: "SonarQube"
+      #  uses: SonarSource/sonarqube-scan-action@v4
+      #  env:
+      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
