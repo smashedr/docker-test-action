@@ -29,9 +29,9 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v4
 
-      #- name: "Debug event.json"
-      #  run: |
-      #    cat "${GITHUB_EVENT_PATH}"
+      - name: "Debug event.json"
+        run: |
+          cat "${GITHUB_EVENT_PATH}"
 
       - name: "Edit YAML"
         uses: Liam-Johnston/yaml-helper@V1
