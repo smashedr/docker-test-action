@@ -1,5 +1,6 @@
-[![Tags](https://img.shields.io/badge/tags-v1_%7C_v1.0-blue?logo=git&logoColor=white)](https://github.com/smashedr/docker-test-action/tags)
-[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=git&logoColor=white&label=latest)](https://github.com/smashedr/docker-test-action/releases/latest)
+[![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/tags)
+[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/tags)
+[![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/releases/latest)
 [![GHCR Size](https://ghcr-badge.egpl.dev/smashedr/docker-test-action/size)](https://github.com/users/smashedr/packages/container/package/docker-test-action)
 [![Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
@@ -117,17 +118,15 @@ https://github.com/smashedr/docker-test-action/network/dependents
 
 ## Tags
 
-The following [rolling tags](https://github.com/smashedr/docker-test-action/tags) are maintained.
+The following rolling [tags](https://github.com/smashedr/docker-test-action/tags) are maintained.
 
-| Tag      | Example  | Bugs | Feat. | Description                            |
-| -------- | -------- | :--: | :---: | -------------------------------------- |
-| `vN`     | `v1`     |  ✅  |  ✅   | Points to latest `vN.x.x` release.     |
-| `vN.N`   | `v1.0`   |  ✅  |  ❌   | Points to latest `vN.N.x` release.     |
-| `vN.N.N` | `v1.0.0` |  ❌  |  ❌   | Points directly to a specific release. |
+| Tag                                                                                                                                                                                                                               | Example  | Target   | Bugs | Feat. | Description                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | :--: | :---: | --------------------------------------------------------- |
+| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=limegreen)](https://github.com/smashedr/docker-test-action/releases/latest)     | `vN`     | `vN.x.x` |  ✅  |  ✅   | Includes new features but is always backwards compatible. |
+| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=yellowgreen)](https://github.com/smashedr/docker-test-action/releases/latest) | `vN.N`   | `vN.N.x` |  ✅  |  ❌   | Only receives bug fixes. This is the most stable tag.     |
+| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/docker-test-action?style=for-the-badge&label=%20&color=orange)](https://github.com/smashedr/docker-test-action/releases/latest)                               | `vN.N.N` | `vN.N.N` |  ❌  |  ❌   | Not a rolling tag. **Not** recommended.                   |
 
-**Important:** Make sure to use one of the [latest tags](https://github.com/smashedr/docker-test-action/tags).
-
-You can view the release notes for each version on the [Releases Page](https://github.com/smashedr/docker-test-action/releases).
+You can view the release notes for each version on the [releases](https://github.com/smashedr/docker-test-action/releases) page.
 
 # Development
 
