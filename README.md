@@ -30,8 +30,8 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| input   | required | default               | description             |
-| ------- | :------: | --------------------- | ----------------------- |
+| Input   | Required | Default               | Description             |
+| :------ | :------: | :-------------------- | :---------------------- |
 | tag     |    -     | `test`                | Tag to Create or Update |
 | summary |    -     | `true`                | Add a Job Summary       |
 | token   |    -     | `${{ github.token }}` | Only for PAT [^1]       |
@@ -69,8 +69,8 @@ and [Actions](https://docs.github.com/en/actions/security-for-github-actions/sec
 
 ## Outputs
 
-| output | description |
-| ------ | ----------- |
+| Output | Description |
+| :----- | :---------- |
 | sha    | Tag Hash    |
 
 ```yaml
@@ -121,7 +121,7 @@ https://github.com/smashedr/docker-test-action/network/dependents
 The following rolling [tags](https://github.com/smashedr/docker-test-action/tags) are maintained.
 
 | Tag                                                                                                                                                                                                                               | Example  | Target   | Bugs | Feat. | Description                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | :--: | :---: | --------------------------------------------------------- |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------- | :--: | :---: | :-------------------------------------------------------- |
 | [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=limegreen)](https://github.com/smashedr/docker-test-action/releases/latest)     | `vN`     | `vN.x.x` |  ✅  |  ✅   | Includes new features but is always backwards compatible. |
 | [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=yellowgreen)](https://github.com/smashedr/docker-test-action/releases/latest) | `vN.N`   | `vN.N.x` |  ✅  |  ❌   | Only receives bug fixes. This is the most stable tag.     |
 | [![GitHub Release](https://img.shields.io/github/v/release/smashedr/docker-test-action?style=for-the-badge&label=%20&color=orange)](https://github.com/smashedr/docker-test-action/releases/latest)                               | `vN.N.N` | `vN.N.N` |  ❌  |  ❌   | Not a rolling tag. **Not** recommended.                   |
