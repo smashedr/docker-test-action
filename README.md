@@ -30,11 +30,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input   | Required | Default&nbsp;Value | Short&nbsp;Description  |
-| :------ | :------: | :----------------- | :---------------------- |
-| tag     |    -     | `test`             | Tag to Create or Update |
-| summary |    -     | `true`             | Add a Job Summary       |
-| token   |    -     | `github.token`     | Only for PAT [^1]       |
+| Input     | Req. | Default&nbsp;Value | Short&nbsp;Description  |
+| :-------- | :--: | :----------------- | :---------------------- |
+| `tag`     |  -   | `test`             | Tag to Create or Update |
+| `summary` |  -   | `true`             | Add a Job Summary       |
+| `token`   |  -   | `github.token`     | Only for PAT [^1]       |
 
 With no inputs this will create/update the tag `test`.
 
