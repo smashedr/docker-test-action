@@ -70,7 +70,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: "Rollback Failed Verification"
+      - name: "Rollback Release"
         if: ${{ failure() }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -97,6 +97,14 @@ jobs:
         id: tags
         uses: cssnr/update-version-tags-action@v1
 
-      - name: "Echo Tags"
+      - name: "Debug Tags"
         run: |
-          echo "tags: ${{ steps.tags.outputs.tags }}"
+          echo "github.ref_name: ${{ github.ref_name }}"
+          echo "steps.tags.outputs.tags: ${{ steps.tags.outputs.tags }}"
+
+      - name: "Update Release Notes Action"
+        uses: smashedr/update-release-notes-action@master
+        continue-on-error: true
+        with:
+          tags: ${{ steps.tags.outputs.tags }}
+          location: tail
