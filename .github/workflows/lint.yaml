@@ -62,7 +62,7 @@ jobs:
       - name: "Bandit"
         if: ${{ !cancelled() }}
         run: |
-          bandit src
+          bandit -r src
 
       - name: "Prettier"
         if: ${{ !cancelled() }}
