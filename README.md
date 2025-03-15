@@ -2,9 +2,9 @@
 [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/tags)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/releases/latest)
 [![GHCR Size](https://ghcr-badge.egpl.dev/smashedr/docker-test-action/size)](https://github.com/users/smashedr/packages/container/package/docker-test-action)
-[![Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
-[![Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
-[![Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
+[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
+[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_docker-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_docker-test-action)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/docker-test-action?logo=github&label=updated)](https://github.com/smashedr/docker-test-action/graphs/commit-activity)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/docker-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/docker-test-action)
@@ -30,11 +30,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input   | Required | Default               | Description             |
-| :------ | :------: | :-------------------- | :---------------------- |
-| tag     |    -     | `test`                | Tag to Create or Update |
-| summary |    -     | `true`                | Add a Job Summary       |
-| token   |    -     | `${{ github.token }}` | Only for PAT [^1]       |
+| Input   | Required | Default&nbsp;Value | Short&nbsp;Description  |
+| :------ | :------: | :----------------- | :---------------------- |
+| tag     |    -     | `test`             | Tag to Create or Update |
+| summary |    -     | `true`             | Add a Job Summary       |
+| token   |    -     | `github.token`     | Only for PAT [^1]       |
 
 With no inputs this will create/update the tag `test`.
 
@@ -63,15 +63,13 @@ permissions:
   contents: write
 ```
 
-Permissions documentation for
-[Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token)
-and [Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication).
+Permissions documentation for [Workflows](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token) and [Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication).
 
 ## Outputs
 
 | Output | Description |
 | :----- | :---------- |
-| sha    | Tag Hash    |
+| `sha`  | Tag Hash    |
 
 ```yaml
 - name: 'Docker Test Action'
@@ -120,11 +118,11 @@ https://github.com/smashedr/docker-test-action/network/dependents
 
 The following rolling [tags](https://github.com/smashedr/docker-test-action/tags) are maintained.
 
-| Tag                                                                                                                                                                                                                               | Example  | Target   | Bugs | Feat. | Description                                               |
-| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :------- | :--: | :---: | :-------------------------------------------------------- |
-| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=limegreen)](https://github.com/smashedr/docker-test-action/releases/latest)     | `vN`     | `vN.x.x` |  ✅  |  ✅   | Includes new features but is always backwards compatible. |
-| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=yellowgreen)](https://github.com/smashedr/docker-test-action/releases/latest) | `vN.N`   | `vN.N.x` |  ✅  |  ❌   | Only receives bug fixes. This is the most stable tag.     |
-| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/docker-test-action?style=for-the-badge&label=%20&color=orange)](https://github.com/smashedr/docker-test-action/releases/latest)                               | `vN.N.N` | `vN.N.N` |  ❌  |  ❌   | Not a rolling tag. **Not** recommended.                   |
+| Version&nbsp;Tag                                                                                                                                                                                                           | Rolling | Bugs | Feat. | Target   | Example  |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | :--: | :---: | :------- | :------- |
+| [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&style=for-the-badge&label=%20&color=44cc10)](https://github.com/smashedr/docker-test-action/releases/latest) |   ✅    |  ✅  |  ✅   | `vN.x.x` | `vN`     |
+| [![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&style=for-the-badge&label=%20&color=blue)](https://github.com/smashedr/docker-test-action/releases/latest) |   ✅    |  ✅  |  ❌   | `vN.N.x` | `vN.N`   |
+| [![GitHub Release](https://img.shields.io/github/v/release/smashedr/docker-test-action?style=for-the-badge&label=%20&color=red)](https://github.com/smashedr/docker-test-action/releases/latest)                           |   ❌    |  ❌  |  ❌   | `vN.N.N` | `vN.N.N` |
 
 You can view the release notes for each version on the [releases](https://github.com/smashedr/docker-test-action/releases) page.
 
