@@ -30,11 +30,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input     | Req. | Default&nbsp;Value | Short&nbsp;Description  |
-| :-------- | :--: | :----------------- | :---------------------- |
-| `tag`     |  -   | `test`             | Tag to Create or Update |
-| `summary` |  -   | `true`             | Add a Job Summary       |
-| `token`   |  -   | `github.token`     | Only for PAT [^1]       |
+| Input   | Req. | Default&nbsp;Value | Short&nbsp;Description  |
+| :------ | :--: | :----------------- | :---------------------- |
+| tag     |  -   | `test`             | Tag to Create or Update |
+| summary |  -   | `true`             | Add a Job Summary       |
+| token   |  -   | `github.token`     | Only for PAT [^1]       |
 
 With no inputs this will create/update the tag `test`.
 
@@ -69,7 +69,7 @@ Permissions documentation for [Workflows](https://docs.github.com/en/actions/wri
 
 | Output | Description |
 | :----- | :---------- |
-| `sha`  | Tag Hash    |
+| sha    | Tag Hash    |
 
 ```yaml
 - name: 'Docker Test Action'
