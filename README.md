@@ -43,7 +43,7 @@ With no inputs this will create/update the tag `test`.
   uses: smashedr/docker-test-action@v1
 ```
 
-With all inputs. Note that `token` is NOT required.
+With all inputs.
 
 ```yaml
 - name: 'Docker Test Action'
@@ -82,6 +82,8 @@ Permissions documentation for [Workflows](https://docs.github.com/en/actions/wri
 ```
 
 ## Examples
+
+💡 _Click on an example heading to expand or collapse the example._
 
 ```yaml
 name: 'Test'
@@ -129,26 +131,46 @@ You can view the release notes for each version on the [releases](https://github
 The **Major** tag is recommended. It is the most up-to-date and always backwards compatible.
 Breaking changes would result in a **Major** version bump. At a minimum you should use a **Minor** tag.
 
-# Development
+# Support
+
+For general help or to request a feature see:
+
+- Q&A Discussion: https://github.com/cssnr/stack-deploy-action/discussions/categories/q-a
+- Request a Feature: https://github.com/cssnr/stack-deploy-action/discussions/categories/feature-requests
+
+If you are experiencing an issue/bug or getting unexpected results you can:
+
+- Report an Issue: https://github.com/cssnr/stack-deploy-action/issues
+- Chat with us on Discord: https://discord.gg/wXy6m2X8wY
+- Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Stack%20Deploy)
+
+For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.github/blob/master/.github/SUPPORT.md#support).
+
+# Contributing
+
+Currently, the best way to contribute to this project is to star this project on GitHub.
 
 If you would like to submit a PR, please review the [CONTRIBUTING.md](CONTRIBUTING.md).
 
-You can test actions locally with: https://github.com/nektos/act
+Additionally, you can support other GitHub Actions I have published:
 
-1. Install `act`: https://nektosact.com/installation/index.html
-2. Create a `.secrets` file with: `GITHUB_TOKEN="ghp_xxx"`
-3. Run `act -j test`
+- [Stack Deploy Action](https://github.com/cssnr/stack-deploy-action?tab=readme-ov-file#readme)
+- [Portainer Stack Deploy](https://github.com/cssnr/portainer-stack-deploy-action?tab=readme-ov-file#readme)
+- [VirusTotal Action](https://github.com/cssnr/virustotal-action?tab=readme-ov-file#readme)
+- [Mirror Repository Action](https://github.com/cssnr/mirror-repository-action?tab=readme-ov-file#readme)
+- [Update Version Tags Action](https://github.com/cssnr/update-version-tags-action?tab=readme-ov-file#readme)
+- [Update JSON Value Action](https://github.com/cssnr/update-json-value-action?tab=readme-ov-file#readme)
+- [Parse Issue Form Action](https://github.com/cssnr/parse-issue-form-action?tab=readme-ov-file#readme)
+- [Cloudflare Purge Cache Action](https://github.com/cssnr/cloudflare-purge-cache-action?tab=readme-ov-file#readme)
+- [Mozilla Addon Update Action](https://github.com/cssnr/mozilla-addon-update-action?tab=readme-ov-file#readme)
+- [Docker Tags Action](https://github.com/cssnr/docker-tags-action?tab=readme-ov-file#readme)
+- [Package Changelog Action](https://github.com/cssnr/package-changelog-action?tab=readme-ov-file#readme)
 
-Note: You need to have a commit pushed as this makes a tag on GitHub for the current sha.
+For a full list of current projects to support visit: [https://cssnr.github.io/](https://cssnr.github.io/)
 
-For advanced using with things like secrets, variables and context see: https://nektosact.com/usage/index.html
+# Development
 
-You should also review the options from `act --help`
-
-Note, the `.env`, `.secrets` and `.vars` files are automatically sourced with no extra options.
-To source `event.json` you need to run act with `act -e event.json`
-
-To use a locally built image enable offline mode: `--action-offline-mode`
+Development instructions have been moved to the [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!

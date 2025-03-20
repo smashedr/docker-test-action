@@ -44,3 +44,26 @@ To test the docker image, you need to build an image with a tag matching the [ac
 image and run act with `--action-offline-mode`. This script does it all for you, just run: [build.sh](build.sh)
 
 To see all available jobs run: `act -l`
+
+# Old Development Section
+
+<!-- TODO: Update this section -->
+
+If you would like to submit a PR, please review the [CONTRIBUTING.md](CONTRIBUTING.md).
+
+You can test actions locally with: https://github.com/nektos/act
+
+1. Install `act`: https://nektosact.com/installation/index.html
+2. Create a `.secrets` file with: `GITHUB_TOKEN="ghp_xxx"`
+3. Run `act -j test`
+
+Note: You need to have a commit pushed as this makes a tag on GitHub for the current sha.
+
+For advanced using with things like secrets, variables and context see: https://nektosact.com/usage/index.html
+
+You should also review the options from `act --help`
+
+Note, the `.env`, `.secrets` and `.vars` files are automatically sourced with no extra options.
+To source `event.json` you need to run act with `act -e event.json`
+
+To use a locally built image enable offline mode: `--action-offline-mode`
