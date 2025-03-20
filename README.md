@@ -135,12 +135,12 @@ Breaking changes would result in a **Major** version bump. At a minimum you shou
 
 For general help or to request a feature see:
 
-- Q&A Discussion: https://github.com/cssnr/stack-deploy-action/discussions/categories/q-a
-- Request a Feature: https://github.com/cssnr/stack-deploy-action/discussions/categories/feature-requests
+- Q&A Discussion: https://github.com/smashedr/docker-test-action/discussions/categories/q-a
+- Request a Feature: https://github.com/smashedr/docker-test-action/discussions/categories/feature-requests
 
 If you are experiencing an issue/bug or getting unexpected results you can:
 
-- Report an Issue: https://github.com/cssnr/stack-deploy-action/issues
+- Report an Issue: https://github.com/smashedr/docker-test-action/issues
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
 - Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=Stack%20Deploy)
 
