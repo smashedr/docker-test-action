@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Debug event.json"
         run: |
@@ -104,8 +104,8 @@ jobs:
           echo "steps.tags.outputs.tags: ${{ steps.tags.outputs.tags }}"
 
       - name: "Update Release Notes Action"
-        uses: smashedr/update-release-notes-action@master
         continue-on-error: true
+        uses: smashedr/update-release-notes-action@master
         with:
           tags: ${{ steps.tags.outputs.tags }}
           location: tail
