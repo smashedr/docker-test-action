@@ -27,9 +27,16 @@
 - [Tags](#Tags)
 - [Development](#Development)
 
+Docker Test Action Template.
+
 This action creates or updates the provided `tag` to the `sha` has that triggered the workflow.
 
 This includes inputs, outputs, job summary, and automatic token authentication.
+
+- JavaScript: https://github.com/smashedr/js-test-action
+- TypeScript: https://github.com/smashedr/ts-test-action
+- Docker: https://github.com/smashedr/docker-test-action
+- Python: https://github.com/smashedr/py-test-action
 
 ## Inputs
 
@@ -177,5 +184,4 @@ Development instructions have been moved to the [CONTRIBUTING.md](CONTRIBUTING.m
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
-    The only purpose of this input is to allow passing a PAT that was manually created and added to secrets.
-    This is required for some actions that the automatic workflow token does not allow.
+    This is only available to allow users to pass a different token they have created and defined in their `secrets`.

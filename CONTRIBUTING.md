@@ -3,6 +3,11 @@
 > [!WARNING]  
 > This guide is a work in progress and may not be complete.
 
+- [Workflow](#Workflow)
+  - [Testing](#Testing)
+- [Actions Development](#Actions-Development)
+- [Old Development Section](#old-development-section)
+
 This is a basic contributing guide and is a work in progress.
 
 ## Workflow
@@ -44,6 +49,23 @@ To test the docker image, you need to build an image with a tag matching the [ac
 image and run act with `--action-offline-mode`. This script does it all for you, just run: [build.sh](build.sh)
 
 To see all available jobs run: `act -l`
+
+# Actions Development
+
+A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
+
+For other Action types, see:
+
+- JavaScript: https://github.com/smashedr/js-test-action
+- TypeScript: https://github.com/smashedr/ts-test-action
+- Docker: https://github.com/smashedr/docker-test-action
+- Python: https://github.com/smashedr/py-test-action (DEPRECATED)
+
+The heart of a GitHub Action is the [action.yml](action.yml) file. This describes everything about your action.
+
+- https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions
+
+JavaScript Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
 
 # Old Development Section
 
