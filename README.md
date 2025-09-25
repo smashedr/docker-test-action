@@ -1,19 +1,22 @@
 [![GitHub Tag Major](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/tags)
-[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/tags)
+[![GitHub Tag Minor](https://img.shields.io/github/v/tag/smashedr/docker-test-action?sort=semver&filter=!v*.*.*&logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/releases)
 [![GitHub Release Version](https://img.shields.io/github/v/release/smashedr/docker-test-action?logo=git&logoColor=white&labelColor=585858&label=%20)](https://github.com/smashedr/docker-test-action/releases/latest)
 [![GHCR Size](https://ghcr-badge.egpl.dev/smashedr/docker-test-action/size)](https://github.com/users/smashedr/packages/container/package/docker-test-action)
-[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=github&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
-[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=github&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
-[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=github&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/release.yaml?logo=cachet&label=release)](https://github.com/smashedr/docker-test-action/actions/workflows/release.yaml)
+[![Workflow Test](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/test.yaml?logo=cachet&label=test)](https://github.com/smashedr/docker-test-action/actions/workflows/test.yaml)
+[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/smashedr/docker-test-action/lint.yaml?logo=cachet&label=lint)](https://github.com/smashedr/docker-test-action/actions/workflows/lint.yaml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=smashedr_docker-test-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=smashedr_docker-test-action)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/docker-test-action?logo=github&label=updated)](https://github.com/smashedr/docker-test-action/graphs/commit-activity)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/smashedr/docker-test-action?logo=github&label=updated)](https://github.com/smashedr/docker-test-action/pulse)
 [![Codeberg Last Commit](https://img.shields.io/gitea/last-commit/shaner/docker-test-action/master?gitea_url=https%3A%2F%2Fcodeberg.org%2F&logo=codeberg&logoColor=white&label=updated)](https://codeberg.org/shaner/docker-test-action)
+[![GitHub Contributors](https://img.shields.io/github/contributors/smashedr/docker-test-action?logo=github)](https://github.com/smashedr/docker-test-action/graphs/contributors)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/smashedr/docker-test-action?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/smashedr/docker-test-action?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/smashedr/docker-test-action?logo=htmx)](https://github.com/smashedr/docker-test-action)
-[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/docker-test-action)](https://github.com/smashedr/docker-test-action/discussions)
 [![GitHub Forks](https://img.shields.io/github/forks/smashedr/docker-test-action?style=flat&logo=github)](https://github.com/smashedr/docker-test-action/forks)
+[![GitHub Discussions](https://img.shields.io/github/discussions/smashedr/docker-test-action?logo=github)](https://github.com/smashedr/docker-test-action/discussions)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/smashedr/docker-test-action?style=flat&logo=github)](https://github.com/smashedr/docker-test-action/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
 # Docker Test Action
 
@@ -30,11 +33,11 @@ This includes inputs, outputs, job summary, and automatic token authentication.
 
 ## Inputs
 
-| Input   | Req. | Default&nbsp;Value | Input&nbsp;Description  |
-| :------ | :--: | :----------------- | :---------------------- |
-| tag     |  -   | `test`             | Tag to Create or Update |
+|  Input  | Req. | Default&nbsp;Value | Input&nbsp;Description  |
+| :-----: | :--: | :----------------- | :---------------------- |
+|   tag   |  -   | `test`             | Tag to Create or Update |
 | summary |  -   | `true`             | Add a Job Summary       |
-| token   |  -   | `github.token`     | Only for PAT [^1]       |
+|  token  |  -   | `github.token`     | Only for PAT [^1]       |
 
 With no inputs this will create/update the tag `test`.
 
