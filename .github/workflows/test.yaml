@@ -7,12 +7,14 @@ on:
   push:
     branches: ["**"]
     paths:
+      - ".github/workflows/test.yaml"
       - "dist/**"
       - "src/**"
-      - ".github/workflows/test.yaml"
       - "package*.json"
       - "requirements*.txt"
       - "action.yml"
+      - "Dockerfile"
+      - "pyproject.toml"
 
 env:
   TAG: "test-tag"
