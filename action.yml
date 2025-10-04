@@ -25,4 +25,4 @@ outputs:
 
 runs:
   using: "docker"
-  image: "docker://ghcr.io/smashedr/docker-test-action:v1.0.2"
+  image: "docker://ghcr.io/smashedr/docker-test-action:v1.0.3"
