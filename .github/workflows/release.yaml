@@ -18,10 +18,11 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v5
 
-      - name: "Debug event.json"
+      - name: "Debug github"
         continue-on-error: true
-        run: |
-          cat "${GITHUB_EVENT_PATH}"
+        env:
+          GITHUB_CTX: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CTX"
 
       - name: "Verify Action Tag"
         run: |
