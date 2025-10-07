@@ -36,11 +36,19 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v5
 
-      - name: "Debug Event"
+      #- name: "Debug CTX github"
+      #  if: ${{ !github.event.act }}
+      #  continue-on-error: true
+      #  env:
+      #    GITHUB_CTX: ${{ toJSON(github) }}
+      #  run: echo "$GITHUB_CTX"
+
+      - name: "Debug CTX github"
         if: ${{ !github.event.act }}
         continue-on-error: true
-        run: |
-          cat "${GITHUB_EVENT_PATH}"
+        env:
+          GITHUB_CTX: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CTX"
 
       - name: "Edit YAML"
         if: ${{ !github.event.act }}
