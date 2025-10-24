@@ -17,7 +17,8 @@ on:
       - "pyproject.toml"
 
 env:
-  TAG: "test-tag"
+  tag: "test-tag"
+  image: "false"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,13 +37,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v5
 
-      #- name: "Debug CTX github"
-      #  if: ${{ !github.event.act }}
-      #  continue-on-error: true
-      #  env:
-      #    GITHUB_CTX: ${{ toJSON(github) }}
-      #  run: echo "$GITHUB_CTX"
-
       - name: "Debug CTX github"
         if: ${{ !github.event.act }}
         continue-on-error: true
@@ -51,7 +45,7 @@ jobs:
         run: echo "$GITHUB_CTX"
 
       - name: "Edit YAML"
-        if: ${{ !github.event.act }}
+        if: ${{ env.image != 'true' }}
         uses: Liam-Johnston/yaml-helper@V1
         with:
           file-location: "action.yml"
@@ -60,11 +54,17 @@ jobs:
             runs:
               image: Dockerfile
 
+      #- name: "Debug"
+      #  if: ${{ !cancelled() }}
+      #  run: |
+      #    echo "github.event.act: ${{ github.event.act }}"
+      #    cat action.yml
+
       - name: "Test Local Action"
         id: test
         uses: ./
         with:
-          tag: ${{ env.TAG }}
+          tag: ${{ env.tag }}
 
       - name: "Validate Outputs"
         id: validate
@@ -78,7 +78,7 @@ jobs:
       #- name: "Cleanup Tag"
       #  if: ${{ always() }}
       #  continue-on-error: true
-      #  run: git push origin :refs/tags/${{ env.TAG }}
+      #  run: git push origin :refs/tags/${{ env.tag }}
 
       - name: "Schedule Failure Notification"
         if: ${{ failure() && github.event_name == 'schedule' }}

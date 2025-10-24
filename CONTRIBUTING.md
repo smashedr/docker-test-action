@@ -50,6 +50,20 @@ image and run act with `--action-offline-mode`. This script does it all for you,
 
 To see all available jobs run: `act -l`
 
+Test from Dockerfile:
+
+```shell
+act -j test --use-gitignore=false --insecure-secrets -e event.json --env RUNNER_DEBUG=1
+```
+
+Test from built image:
+
+```shell
+bash build.sh
+```
+
+Note: `build.sh` also runs the test, you can pass any `act` arguments to the script.
+
 # Actions Development
 
 A GitHub Actions Primer: https://docs.github.com/en/actions/sharing-automations/creating-actions
@@ -65,13 +79,9 @@ The heart of a GitHub Action is the [action.yml](action.yml) file. This describe
 
 - https://docs.github.com/en/actions/sharing-automations/creating-actions/metadata-syntax-for-github-actions
 
-JavaScript Actions must be fully built in the action's environment. See the `build` in [package.json](package.json) for details.
-
 # Old Development Section
 
 <!-- TODO: Update this section -->
-
-If you would like to submit a PR, please review the [CONTRIBUTING.md](CONTRIBUTING.md).
 
 You can test actions locally with: https://github.com/nektos/act
 

@@ -162,7 +162,7 @@ For more information, see the CSSNR [SUPPORT.md](https://github.com/cssnr/.githu
 
 Currently, the best way to contribute to this project is to star this project on GitHub.
 
-If you would like to submit a PR, please review the [CONTRIBUTING.md](CONTRIBUTING.md).
+For more information, see the CSSNR [CONTRIBUTING.md](#contributing-ov-file).
 
 Additionally, you can support other GitHub Actions I have published:
 
@@ -220,7 +220,7 @@ For a full list of current projects to support visit: [https://cssnr.github.io/]
 
 # Development
 
-Development instructions have been moved to the [CONTRIBUTING.md](CONTRIBUTING.md).
+Development instructions have been moved to the local [CONTRIBUTING.md](#contributing-ov-file).
 
 [^1]:
     The `${{ github.token }}` / `{{ secrets.GITHUB_TOKEN }}` is automatically passed, there is no need to manually pass these!
