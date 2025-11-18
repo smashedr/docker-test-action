@@ -1,5 +1,7 @@
 name: "Test"
 
+# actions-up-ignore-file
+
 on:
   workflow_dispatch:
   #schedule:
@@ -79,13 +81,22 @@ jobs:
           tag: ${{ env.tag }}
 
       - name: "Validate Outputs"
-        id: validate
-        run: |
-          echo "sha: '${{ steps.test.outputs.sha }}'"
-          if [ "${{ steps.test.outputs.sha }}" != "${GITHUB_SHA}" ];then
-            echo "Output Verification Failed: sha"
-            exit 1
-          fi
+        uses: cssnr/validate-outputs-action@master
+        with:
+          outputs: ${{ toJSON(steps.test.outputs) }}
+          data: |
+            sha: ${{ github.sha }}
+
+      #- name: "Validate Outputs"
+      #  id: validate
+      #  env:
+      #    sha: ${{ steps.test.outputs.sha }}
+      #  run: |
+      #    echo "sha: ${sha}"
+      #    if [ "${sha}" != "${GITHUB_SHA}" ];then
+      #      echo "Output Verification Failed: sha"
+      #      exit 1
+      #    fi
 
       #- name: "Cleanup Tag"
       #  if: ${{ always() }}
