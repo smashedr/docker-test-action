@@ -1,6 +1,7 @@
 name: "Docker Test Action"
 description: "Docker Test Action."
 author: "Shane"
+
 branding:
   icon: "type"
   color: "green"
